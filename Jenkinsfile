@@ -6,12 +6,13 @@ pipeline {
   }
 
   stages {
-        stage('SYS BUILD') {
+        stage('SSS FRONTEND BUILD') {
             steps {
               container('code-builder') {
                 sh '''
-                    sudo apt install -y libcppunit-dev
-                    
+                    apt install -y libcppunit-dev
+                   
+                
                     docker build -f Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --no-cache .
                     
                     docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
